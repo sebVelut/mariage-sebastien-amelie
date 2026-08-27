@@ -161,12 +161,22 @@ Si tu achètes un domaine (~10 €/an) :
 ## 4. Pour aller plus loin
 
 **Modifier les couleurs** — tout est en haut de `assets/css/style.css`, dans le
-bloc `:root` : `--blue-*` (bleu-gris), `--rose-*` (rose pastel), `--sage-*`
-(verts), `--brown-*` / `--kraft` (les bruns du kraft).
+bloc `:root` : `--blue-*` (bleu-gris), `--lilac-*` (lavande et violet),
+`--rose-*` (rose magenta poudré), `--sage-*` (verts bleutés du feuillage),
+`--brown-*` / `--kraft` (les tons kraft de l'enveloppe).
 
-**Modifier le feuillage** — les SVG sont générés par
-`python3 tools/generate_botanic.py`. Les branches, densités et teintes se
-règlent dans ce script (variable `GREENS`, fonctions `column_left`, `wreath`…).
+**Modifier le feuillage et les fleurs** — les SVG sont générés par
+`python3 tools/generate_botanic.py`. Trois listes en haut du script pilotent
+toute la palette des illustrations :
+
+- `LEAVES` — les teintes des feuilles, en paires `(clair, foncé)`
+- `BLOOMS` — les fleurs, en triplets `(cœur, pétale clair, pétale foncé)`
+- `BUDS` — les petites baies
+- `WATERCOLOR` — la force du flou aquarelle (mets `0` pour des contours nets)
+
+Les fonctions `column_left`, `wreath`, `corner`… définissent la composition :
+courbure des branches, densité des feuilles, et position/taille de chaque fleur
+(`bloom(rnd, x, y, rayon, bi=index_de_BLOOMS)`).
 
 **Désactiver l'enveloppe** — `options.enveloppe: false` dans `config.js`.
 Par défaut elle ne se joue qu'une fois par session de navigation : un invité
