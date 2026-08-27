@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notre mariage</title>
+<meta name="description" content="Toutes les informations pratiques de notre mariage : date, lieu, programme et confirmation de présence.">
+<meta name="theme-color" content="#FBF8F4">
+
+<!-- Partage sur les réseaux / messageries -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Notre mariage">
+<meta property="og:description" content="Date, lieu, programme et confirmation de présence.">
+<meta property="og:image" content="assets/img/botanic/wreath.svg">
+
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&family=Petit+Formal+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="is-locked">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     ENVELOPPE — animation d'ouverture à l'arrivée
+     ══════════════════════════════════════════════════════════════════════ -->
+<div class="envelope-overlay" id="envelopeOverlay" role="dialog" aria-label="Ouvrir le faire-part">
+
+  <div class="env-botanic env-botanic--tl"></div>
+  <div class="env-botanic env-botanic--br"></div>
+
+  <div class="env-dust" aria-hidden="true"></div>
+
+  <div class="envelope-stage">
+    <div class="envelope" id="envelope">
+
+      <!-- carton d'invitation qui sort de l'enveloppe -->
+      <div class="env-letter" id="envLetter">
+        <div class="env-letter__inner">
+          <span class="env-letter__eyebrow" data-tpl="carton"></span>
+          <h1 class="env-letter__names">
+            <span data-tpl="prenomA"></span>
+            <em>&amp;</em>
+            <span data-tpl="prenomB"></span>
+          </h1>
+          <div class="env-letter__rule"><span></span><i></i><span></span></div>
+          <p class="env-letter__date" data-tpl="jourTexte"></p>
+          <p class="env-letter__place" data-tpl="lieuNom"></p>
+        </div>
+      </div>
+
+      <div class="env-back"></div>
+      <div class="env-front"></div>
+      <div class="env-flap" id="envFlap"></div>
+
+      <!-- étiquette kraft suspendue, comme sur un faire-part -->
+      <div class="env-tag">
+        <div class="env-tag__hole"></div>
+        <span class="env-tag__d" data-tpl="jourChiffre"></span>
+        <span class="env-tag__line"></span>
+        <span class="env-tag__m" data-tpl="moisChiffre"></span>
+        <span class="env-tag__y" data-tpl="annee"></span>
+      </div>
+
+      <button class="wax-seal" id="waxSeal" type="button" aria-label="Ouvrir l'enveloppe">
+        <span data-tpl="initiales"></span>
+      </button>
+    </div>
+  </div>
+
+  <p class="env-hint" id="envHint">Cliquez sur le cachet pour ouvrir</p>
+  <button class="env-skip" id="envSkip" type="button">Passer l'animation</button>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     FEUILLAGE LATÉRAL (décor fixe, parallaxe douce)
+     ══════════════════════════════════════════════════════════════════════ -->
+<div class="side-botanic side-botanic--left"  aria-hidden="true"><div class="side-botanic__img"></div></div>
+<div class="side-botanic side-botanic--right" aria-hidden="true"><div class="side-botanic__img"></div></div>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     NAVIGATION
+     ══════════════════════════════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#accueil"><span data-tpl="initiales"></span></a>
+
+    <button class="nav__burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav__links" id="navLinks">
+      <a href="#invitation">L'invitation</a>
+      <a href="#jour-j">Le jour J</a>
+      <a href="#programme">Programme</a>
+      <a href="#acces">Accès</a>
+      <a href="#rsvp" class="nav__cta">Répondre</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+<!-- ══════════════════════════ ACCUEIL ══════════════════════════ -->
+<section class="hero" id="accueil">
+  <div class="hero__wreath" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow" data-tpl="accroche"></p>
+    <h1 class="hero__names">
+      <span class="hero__name" data-tpl="prenomA"></span>
+      <span class="hero__amp">&amp;</span>
+      <span class="hero__name" data-tpl="prenomB"></span>
+    </h1>
+    <div class="hero__meta">
+      <span data-tpl="jourTexte"></span>
+      <i aria-hidden="true"></i>
+      <span data-tpl="lieuNom"></span>
+    </div>
+
+    <div class="countdown" id="countdown" hidden>
+      <div class="countdown__cell"><b data-cd="j">0</b><small>jours</small></div>
+      <div class="countdown__cell"><b data-cd="h">0</b><small>heures</small></div>
+      <div class="countdown__cell"><b data-cd="m">0</b><small>minutes</small></div>
+      <div class="countdown__cell"><b data-cd="s">0</b><small>secondes</small></div>
+    </div>
+
+    <a class="hero__scroll" href="#invitation" aria-label="Descendre">
+      <span></span>
+    </a>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ INVITATION ══════════════════════════ -->
+<section class="section section--invitation" id="invitation">
+  <div class="wrap">
+    <div class="invitation">
+
+      <figure class="invitation__photo reveal" data-photo="couple">
+        <div class="frame">
+          <img alt="" data-img="couple">
+          <div class="frame__fallback">
+            <svg viewBox="0 0 48 48" width="34" height="34" aria-hidden="true">
+              <path d="M6 38V14a3 3 0 0 1 3-3h6l3-4h12l3 4h6a3 3 0 0 1 3 3v24a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+              <circle cx="24" cy="25" r="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            </svg>
+            <span>Votre photo ici</span>
+            <code>assets/img/photos/couple.jpg</code>
+          </div>
+        </div>
+        <div class="invitation__photo-leaf" aria-hidden="true"></div>
+      </figure>
+
+      <div class="invitation__text reveal">
+        <p class="section__eyebrow">Bienvenue</p>
+        <h2 class="section__title" data-tpl="invitationTitre"></h2>
+        <div class="divider divider--left" aria-hidden="true"></div>
+        <div class="prose" id="invitationProse"></div>
+        <p class="signature" data-tpl="signature"></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ LE JOUR J ══════════════════════════ -->
+<section class="section section--dark" id="jour-j">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <p class="section__eyebrow">Save the date</p>
+      <h2 class="section__title">Le jour J</h2>
+      <div class="divider" aria-hidden="true"></div>
+    </header>
+
+    <div class="daycard reveal">
+      <div class="daycard__date">
+        <span class="daycard__d" data-tpl="jourChiffre"></span>
+        <span class="daycard__sep"></span>
+        <span class="daycard__m" data-tpl="moisChiffre"></span>
+        <span class="daycard__y" data-tpl="annee"></span>
+      </div>
+      <div class="daycard__body">
+        <p class="daycard__when" data-tpl="jourTexte"></p>
+        <p class="daycard__where" data-tpl="lieuNom"></p>
+        <p class="daycard__addr" data-tpl="lieuAdresse"></p>
+        <a class="btn btn--ghost" id="btnItineraire" href="#" target="_blank" rel="noopener">
+          Ouvrir l'itinéraire
+        </a>
+      </div>
+    </div>
+
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ PROGRAMME ══════════════════════════ -->
+<section class="section" id="programme">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <p class="section__eyebrow">Déroulé</p>
+      <h2 class="section__title">Le programme</h2>
+      <div class="divider" aria-hidden="true"></div>
+      <p class="section__lead">Les horaires sont donnés à titre indicatif — l'essentiel est d'être là.</p>
+    </header>
+
+    <ol class="timeline" id="timeline"></ol>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ ACCÈS / CARTE ══════════════════════════ -->
+<section class="section section--soft" id="acces">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <p class="section__eyebrow">Y aller</p>
+      <h2 class="section__title">L'accès</h2>
+      <div class="divider" aria-hidden="true"></div>
+    </header>
+
+    <div class="acces reveal">
+      <div class="acces__map">
+        <div class="map-frame">
+          <iframe id="mapFrame" title="Carte du lieu de réception" loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+      <aside class="acces__info">
+        <h3 data-tpl="lieuNom"></h3>
+        <p class="acces__addr" data-tpl="lieuAdresse"></p>
+        <p class="acces__note" data-tpl="infoParking"></p>
+        <a class="btn" id="btnItineraire2" href="#" target="_blank" rel="noopener">Itinéraire Google Maps</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ RSVP ══════════════════════════ -->
+<section class="section section--rsvp" id="rsvp">
+  <div class="wrap wrap--narrow">
+    <header class="section__head reveal">
+      <p class="section__eyebrow">Réponse souhaitée avant le <span data-tpl="dateLimite"></span></p>
+      <h2 class="section__title">Serez-vous des nôtres&nbsp;?</h2>
+      <div class="divider" aria-hidden="true"></div>
+    </header>
+
+    <form class="rsvp reveal" id="rsvpForm" novalidate>
+
+      <div class="field">
+        <label for="f-nom">Votre nom et prénom</label>
+        <input type="text" id="f-nom" name="nom" required autocomplete="name" placeholder="Camille Durand">
+      </div>
+
+      <div class="field">
+        <label for="f-email">Votre e-mail</label>
+        <input type="email" id="f-email" name="email" required autocomplete="email" placeholder="camille@exemple.fr">
+      </div>
+
+      <fieldset class="field field--choice">
+        <legend>Serez-vous présent·e ?</legend>
+        <div class="choices">
+          <label class="choice">
+            <input type="radio" name="presence" value="Oui, je serai là" required>
+            <span class="choice__box">
+              <b>Avec joie</b>
+              <small>Je serai là</small>
+            </span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="presence" value="Non, je ne pourrai pas venir">
+            <span class="choice__box">
+              <b>Malheureusement non</b>
+              <small>Je ne pourrai pas</small>
+            </span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Bloc affiché seulement si la réponse est « oui » -->
+      <div class="rsvp__conditional" id="rsvpYes" hidden>
+
+        <div class="field">
+          <label for="f-nb">Nombre de personnes (vous compris)</label>
+          <select id="f-nb" name="nombre_personnes"></select>
+        </div>
+
+        <fieldset class="field field--choice">
+          <legend>Souhaitez-vous un repas végan&nbsp;?</legend>
+          <div class="choices">
+            <label class="choice">
+              <input type="radio" name="repas" value="Menu classique">
+              <span class="choice__box">
+                <b>Menu classique</b>
+                <small>Le menu du domaine</small>
+              </span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="repas" value="Menu végan">
+              <span class="choice__box">
+                <b>Menu végan</b>
+                <small>100 % végétal</small>
+              </span>
+            </label>
+          </div>
+          <p class="field__hint">Si votre groupe mélange les deux, précisez-le dans le message ci-dessous.</p>
+        </fieldset>
+
+      </div>
+
+      <div class="field">
+        <label for="f-msg">Un mot pour nous <span class="opt">(facultatif)</span></label>
+        <textarea id="f-msg" name="message" rows="4" placeholder="Allergies, contraintes, ou juste un petit mot…"></textarea>
+      </div>
+
+      <!-- anti-spam : champ invisible que seuls les robots remplissent -->
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot">
+
+      <button class="btn btn--big" type="submit" id="rsvpSubmit">
+        <span class="btn__label">Envoyer ma réponse</span>
+        <span class="btn__spinner" aria-hidden="true"></span>
+      </button>
+
+      <p class="rsvp__status" id="rsvpStatus" role="status" aria-live="polite"></p>
+      <p class="rsvp__contact">
+        Un souci avec le formulaire&nbsp;? Écrivez-nous&nbsp;: <a id="mailContact" href="#"></a><span id="telContact"></span>
+      </p>
+    </form>
+
+    <!-- écran de remerciement -->
+    <div class="thanks" id="rsvpThanks" hidden>
+      <div class="thanks__wreath" aria-hidden="true"></div>
+      <h3>Merci&nbsp;!</h3>
+      <p id="thanksText"></p>
+      <button class="btn btn--ghost" type="button" id="rsvpAgain">Envoyer une autre réponse</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ══════════════════════════ PIED DE PAGE ══════════════════════════ -->
+<footer class="footer">
+  <div class="footer__leaf" aria-hidden="true"></div>
+  <p class="footer__names">
+    <span data-tpl="prenomA"></span> <em>&amp;</em> <span data-tpl="prenomB"></span>
+  </p>
+  <p class="footer__date" data-tpl="jourTexte"></p>
+  <p class="footer__msg" data-tpl="footerMsg"></p>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Revenir en haut">↑</button>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

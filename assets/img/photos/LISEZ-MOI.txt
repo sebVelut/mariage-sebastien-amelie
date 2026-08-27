@@ -1,0 +1,15 @@
+Dépose ici les photos du site.
+
+Noms attendus par défaut (modifiables dans assets/js/config.js) :
+
+  couple.jpg   -> la photo de vous deux, section « Un mot pour vous »
+  lieu-1.jpg   -> galerie du lieu
+  lieu-2.jpg
+  lieu-3.jpg
+
+Conseils :
+  - format paysage ou portrait, peu importe : les cadres recadrent tout seuls
+  - ~1600 px de large suffisent largement
+  - compressez-les (squoosh.app) : visez moins de 400 Ko par photo
+
+Tant qu'une photo est absente, un cadre « photo à venir » s'affiche à sa place.
