@@ -173,7 +173,7 @@
 
     const url = C.lieu?.lienItineraire
       || `https://www.google.com/maps/dir/?api=1&destination=${q}`;
-    ["#btnItineraire", "#btnItineraire2"].forEach((sel) => {
+    ["#btnItineraire", "#btnItineraire2", "#mapFallback"].forEach((sel) => {
       const a = $(sel);
       if (a) a.href = url;
     });
