@@ -13,6 +13,10 @@
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* Le défilement est bloqué par JS (et non dans le HTML) : si le script
+     échoue, la page reste utilisable au lieu de rester figée. */
+  if (document.body) document.body.classList.add("is-locked");
+
   /* petit wrapper : sessionStorage peut lever une exception (mode privé,
      aperçu embarqué…). On ne doit jamais casser le site pour ça. */
   const store = {
