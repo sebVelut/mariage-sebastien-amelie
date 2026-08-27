@@ -96,7 +96,7 @@ const WEDDING = {
   /*    place — le site ne casse jamais.                                 */
   /* ------------------------------------------------------------------ */
   photos: {
-    couple: { src: "assets/img/photos/couple.jpg", alt: "Nous deux" },
+    couple: { src: "assets/img/photos/couple.JPEG", alt: "Nous deux" },
     galerie: [
       { src: "assets/img/photos/lieu-1.jpg", alt: "Le domaine" },
       { src: "assets/img/photos/lieu-2.jpg", alt: "La cour arrière" },
