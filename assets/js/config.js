@@ -11,9 +11,9 @@ const WEDDING = {
   /* 1. LE COUPLE                                                        */
   /* ------------------------------------------------------------------ */
   couple: {
-    prenomA: "Jeanne",              //  À REMPLACER
-    prenomB: "Benjamin",            //  À REMPLACER
-    initiales: "J & B",             //  À REMPLACER (cachet de cire de l'enveloppe)
+    prenomA: "Amélie",              //  À REMPLACER
+    prenomB: "Sébastien",            //  À REMPLACER
+    initiales: "A & S",             //  À REMPLACER (cachet de cire de l'enveloppe)
   },
 
   /* ------------------------------------------------------------------ */
@@ -21,24 +21,24 @@ const WEDDING = {
   /*    Format ISO : "AAAA-MM-JJTHH:MM:SS" (heure de début de la journée) */
   /* ------------------------------------------------------------------ */
   date: {
-    iso: "2028-07-22T15:00:00",     //  À REMPLACER — sert au compte à rebours
-    jourTexte: "Samedi 22 juillet 2028",   //  À REMPLACER — affiché en toutes lettres
-    jourChiffre: "22",              //  À REMPLACER — grand chiffre du cachet
+    iso: "2027-07-03T15:00:00",     //  À REMPLACER — sert au compte à rebours
+    jourTexte: "Samedi 3 juillet 2027",   //  À REMPLACER — affiché en toutes lettres
+    jourChiffre: "03",              //  À REMPLACER — grand chiffre du cachet
     moisChiffre: "07",              //  À REMPLACER
-    annee: "2028",                  //  À REMPLACER
+    annee: "2027",                  //  À REMPLACER
   },
 
   /* ------------------------------------------------------------------ */
   /* 3. LIEU                                                             */
   /* ------------------------------------------------------------------ */
   lieu: {
-    nom: "Domaine de Saint-Michel",           //  À REMPLACER
-    adresse: "1234 route des Vignes, 31000 Toulouse",  //  À REMPLACER
+    nom: "Domaine du Petit Varennes",           //  À REMPLACER
+    adresse: "62 Rue du Mal Leclerc, 89140 Serbonnes",  //  À REMPLACER
     // Ce texte sert à générer la carte Google Maps. Mets le nom du lieu
     // + la ville, exactement comme tu l'écrirais dans la barre de recherche.
-    rechercheMaps: "Domaine de Saint-Michel, Toulouse",  //  À REMPLACER
+    rechercheMaps: "Domaine du Petit Varennes, Serbonnes",  //  À REMPLACER
     // Lien "Ouvrir l'itinéraire" — laisse vide pour le générer automatiquement.
-    lienItineraire: "",
+    lienItineraire: "https://maps.app.goo.gl/m7FhKqFu8sjT8YU67",
     infoParking: "Parking gratuit sur place, accès fléché depuis la route principale.",
   },
 
@@ -60,7 +60,7 @@ const WEDDING = {
       "Vous trouverez sur cette page toutes les informations pratiques, le déroulé de la journée, et un petit formulaire pour nous confirmer votre présence.",
       "À très vite,",
     ],
-    signature: "Jeanne & Benjamin",   //  À REMPLACER
+    signature: "Amélie & Sébastien",   //  À REMPLACER
 
     // Phrase de fin de page
     footer: "Merci d'être là. Ce jour-là ne serait pas le même sans vous.",
@@ -73,17 +73,17 @@ const WEDDING = {
   /*            arrivee | brunch                                         */
   /* ------------------------------------------------------------------ */
   programme: [
-    { heure: "14h30", titre: "Accueil des invités", lieu: "Cour du domaine",
+    { heure: "15h00", titre: "Accueil des invités", lieu: "Cour du domaine",
       texte: "Un rafraîchissement vous attend à l'ombre des platanes.", icone: "arrivee" },
-    { heure: "15h00", titre: "Cérémonie", lieu: "Chapelle Saint-Michel",
+    { heure: "16h00", titre: "Cérémonie", lieu: "Cour du domaine",
       texte: "Le moment que vous ne voulez pas manquer.", icone: "ceremonie" },
-    { heure: "16h30", titre: "Vin d'honneur", lieu: "Jardin sud",
+    { heure: "17h00", titre: "Vin d'honneur", lieu: "Jardin sud",
       texte: "Champagne, douceurs et retrouvailles.", icone: "cocktail" },
     { heure: "18h00", titre: "Photos de groupe", lieu: "Devant l'orangerie",
       texte: "Une petite demi-heure, promis.", icone: "photo" },
     { heure: "20h00", titre: "Dîner", lieu: "Grande salle",
       texte: "Plan de table affiché à l'entrée.", icone: "diner" },
-    { heure: "23h00", titre: "Ouverture du bal", lieu: "Pavillon du parc",
+    { heure: "23h00", titre: "Ouverture du bal", lieu: "Salle de danse",
       texte: "Et jusqu'au bout de la nuit.", icone: "danse" },
     { heure: "11h00", titre: "Brunch (dimanche)", lieu: "Terrasse",
       texte: "Pour ceux qui tiennent encore debout.", icone: "brunch" },
@@ -99,7 +99,7 @@ const WEDDING = {
     couple: { src: "assets/img/photos/couple.jpg", alt: "Nous deux" },
     galerie: [
       { src: "assets/img/photos/lieu-1.jpg", alt: "Le domaine" },
-      { src: "assets/img/photos/lieu-2.jpg", alt: "La chapelle" },
+      { src: "assets/img/photos/lieu-2.jpg", alt: "La cour arrière" },
       { src: "assets/img/photos/lieu-3.jpg", alt: "Le jardin" },
     ],
   },
@@ -114,12 +114,12 @@ const WEDDING = {
   /*       Copie la partie finale (xdorwabc) ci-dessous.                 */
   /* ------------------------------------------------------------------ */
   rsvp: {
-    formspreeId: "",                // <-- colle ici ton identifiant Formspree
-    dateLimite: "1er mai 2028",     //  À REMPLACER
+    formspreeId: "xyeygdbv",                // <-- colle ici ton identifiant Formspree
+    dateLimite: "1er mai 2027",     //  À REMPLACER
     // Nombre maximum de personnes qu'un invité peut annoncer
     maxInvites: 6,
-    emailContact: "jeanne.benjamin@example.com",  //  À REMPLACER
-    telContact: "",                 // optionnel, ex. "06 12 34 56 78"
+    emailContact: "sebvelut28@gmail.com",  //  À REMPLACER
+    telContact: "0618358529",                 // optionnel, ex. "06 12 34 56 78"
   },
 
   /* ------------------------------------------------------------------ */
