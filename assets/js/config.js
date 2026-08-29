@@ -115,7 +115,8 @@ const WEDDING = {
   infosPratiques: {
     titre: "Où dormir",
     intro: "Voici quelques adresses autour du domaine, de la plus proche à la plus éloignée. Pensez à réserver tôt : juillet est une période chargée dans la région.",
-
+    logements: [],
+    autres: [],
     // logements: [
     //   {
     //     nom: "Domaine de Saint-Michel",             //  À REMPLACER
