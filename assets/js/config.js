@@ -116,60 +116,60 @@ const WEDDING = {
     titre: "Où dormir",
     intro: "Voici quelques adresses autour du domaine, de la plus proche à la plus éloignée. Pensez à réserver tôt : juillet est une période chargée dans la région.",
 
-    logements: [
-      {
-        nom: "Domaine de Saint-Michel",             //  À REMPLACER
-        type: "Sur place",
-        distance: "Sur le lieu de réception",
-        prix: "à partir de 120 € la nuit",
-        note: "Douze chambres, à réserver directement auprès du domaine. Mentionnez notre mariage : un tarif nous a été réservé.",
-        tel: "05 61 00 00 00",
-        site: "https://example.com",
-      },
-      {
-        nom: "Hôtel des Vignes",                    //  À REMPLACER
-        type: "Hôtel",
-        distance: "5 min en voiture",
-        prix: "90 – 140 €",
-        note: "",
-        tel: "",
-        site: "https://example.com",
-      },
-      {
-        nom: "La Grange aux Oiseaux",               //  À REMPLACER
-        type: "Chambres d'hôtes",
-        distance: "10 min en voiture",
-        prix: "75 – 110 €",
-        note: "Petit-déjeuner compris, quatre chambres seulement.",
-        tel: "",
-        site: "https://example.com",
-      },
-      {
-        nom: "Camping du Lac",                      //  À REMPLACER
-        type: "Camping",
-        distance: "15 min en voiture",
-        prix: "à partir de 25 €",
-        note: "Emplacements tentes et quelques chalets.",
-        tel: "",
-        site: "https://example.com",
-      },
-    ],
+    // logements: [
+    //   {
+    //     nom: "Domaine de Saint-Michel",             //  À REMPLACER
+    //     type: "Sur place",
+    //     distance: "Sur le lieu de réception",
+    //     prix: "à partir de 120 € la nuit",
+    //     note: "Douze chambres, à réserver directement auprès du domaine. Mentionnez notre mariage : un tarif nous a été réservé.",
+    //     tel: "05 61 00 00 00",
+    //     site: "https://example.com",
+    //   },
+    //   {
+    //     nom: "Hôtel des Vignes",                    //  À REMPLACER
+    //     type: "Hôtel",
+    //     distance: "5 min en voiture",
+    //     prix: "90 – 140 €",
+    //     note: "",
+    //     tel: "",
+    //     site: "https://example.com",
+    //   },
+    //   {
+    //     nom: "La Grange aux Oiseaux",               //  À REMPLACER
+    //     type: "Chambres d'hôtes",
+    //     distance: "10 min en voiture",
+    //     prix: "75 – 110 €",
+    //     note: "Petit-déjeuner compris, quatre chambres seulement.",
+    //     tel: "",
+    //     site: "https://example.com",
+    //   },
+    //   {
+    //     nom: "Camping du Lac",                      //  À REMPLACER
+    //     type: "Camping",
+    //     distance: "15 min en voiture",
+    //     prix: "à partir de 25 €",
+    //     note: "Emplacements tentes et quelques chalets.",
+    //     tel: "",
+    //     site: "https://example.com",
+    //   },
+    // ],
 
-    // Blocs libres affichés sous les logements. Mets [] pour n'en afficher aucun.
-    autres: [
-      {
-        titre: "Navette",
-        texte: "Une navette fera l'aller-retour entre le centre-ville et le domaine, à 14 h puis à 1 h du matin. Dites-le nous dans le formulaire de réponse si vous comptez l'emprunter, pour que nous prévoyions les places.",
-      },
-      {
-        titre: "Tenue",
-        texte: "Élégante et confortable. La cérémonie et le vin d'honneur se tiennent en extérieur, sur de l'herbe : évitez les talons trop fins.",
-      },
-      {
-        titre: "Cadeaux",
-        texte: "Votre présence est déjà le principal. Pour ceux qui insistent, une urne sera à disposition le jour J.",
-      },
-    ],
+    // // Blocs libres affichés sous les logements. Mets [] pour n'en afficher aucun.
+    // autres: [
+    //   {
+    //     titre: "Navette",
+    //     texte: "Une navette fera l'aller-retour entre le centre-ville et le domaine, à 14 h puis à 1 h du matin. Dites-le nous dans le formulaire de réponse si vous comptez l'emprunter, pour que nous prévoyions les places.",
+    //   },
+    //   {
+    //     titre: "Tenue",
+    //     texte: "Élégante et confortable. La cérémonie et le vin d'honneur se tiennent en extérieur, sur de l'herbe : évitez les talons trop fins.",
+    //   },
+    //   {
+    //     titre: "Cadeaux",
+    //     texte: "Votre présence est déjà le principal. Pour ceux qui insistent, une urne sera à disposition le jour J.",
+    //   },
+    // ],
   },
 
   /* ------------------------------------------------------------------ */
