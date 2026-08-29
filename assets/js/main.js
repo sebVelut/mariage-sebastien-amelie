@@ -60,11 +60,17 @@
     infosIntro: C.infosPratiques?.intro,
   };
 
-  function hydrate() {
-    $$("[data-tpl]").forEach((el) => {
-      const v = TPL[el.dataset.tpl];
-      if (v != null && v !== "") el.textContent = v;
+  /* Remplit les [data-tpl] d'un morceau de page. Appelable à tout moment :
+     les sections créées par script s'en servent aussi. */
+  function hydrateTpl(racine) {
+    $$("[data-tpl]", racine || document).forEach((n) => {
+      const v = TPL[n.dataset.tpl];
+      if (v != null && v !== "") n.textContent = v;
     });
+  }
+
+  function hydrate() {
+    hydrateTpl();
 
     document.title = `${TPL.prenomA} & ${TPL.prenomB} — Notre mariage`;
 
@@ -145,14 +151,50 @@
   }
 
   /* --------------------------------------------- informations pratiques -- */
+  /**
+   * Crée le squelette de la section si index.html ne le contient pas.
+   * Comme ça, mettre à jour config.js + main.js suffit : pas besoin de
+   * retoucher le HTML à la main.
+   */
+  function squeletteInfos() {
+    const rsvp = document.getElementById("rsvp");
+    const hote = rsvp?.parentNode || $("main");
+    if (!hote) return null;
+
+    const section = el("section", "section");
+    section.id = "infos";
+    section.innerHTML =
+      `<div class="wrap">
+         <header class="section__head reveal">
+           <p class="section__eyebrow">Informations pratiques</p>
+           <h2 class="section__title" data-tpl="infosTitre"></h2>
+           <div class="divider" aria-hidden="true"></div>
+           <p class="section__lead" data-tpl="infosIntro"></p>
+         </header>
+         <ul class="lodgings" id="lodgings"></ul>
+         <div class="infos-plus" id="infosPlus"></div>
+       </div>`;
+    hote.insertBefore(section, rsvp || null);
+    hydrateTpl(section);
+
+    // et l'entrée de menu correspondante, juste avant le bouton « Répondre »
+    const menu = $("#navLinks");
+    if (menu && !menu.querySelector('a[href="#infos"]')) {
+      const a = el("a");
+      a.href = "#infos";
+      a.textContent = C.infosPratiques?.titre || "Infos pratiques";
+      menu.insertBefore(a, menu.querySelector(".nav__cta"));
+    }
+    return section;
+  }
+
   function buildInfos() {
     const I = C.infosPratiques || {};
-    const liste = $("#lodgings");
-    const plus = $("#infosPlus");
-    const section = document.getElementById("infos");
-
     const logements = I.logements || [];
     const autres = I.autres || [];
+
+    let section = document.getElementById("infos");
+
     // section vide (aucun logement, aucun bloc) : on la retire du site et
     // du menu, plutôt que de laisser un titre orphelin
     if (!logements.length && !autres.length) {
@@ -160,6 +202,11 @@
       $$('#navLinks a[href="#infos"]').forEach((a) => a.remove());
       return;
     }
+    if (!section) section = squeletteInfos();
+    if (!section) return;
+
+    const liste = $("#lodgings", section);
+    const plus = $("#infosPlus", section);
 
     if (liste) {
       liste.innerHTML = "";
