@@ -325,40 +325,74 @@
     const already = C.options?.enveloppeUneSeuleFois && store.get("faire-part-ouvert") === "1";
     if (C.options?.enveloppe === false || already || reduceMotion) return finish(true);
 
-    let opened = false;
+    const hint = $("#envHint");
+    // Temps de lecture du carton, en millisecondes. 0 = on attend le clic,
+    // aussi longtemps qu'il le faut.
+    const duree = C.options?.dureeCarton != null ? C.options.dureeCarton : 9000;
+    // Le carton met environ 1,9 s à sortir et à s'afficher : avant ça, un clic
+    // couperait l'animation au milieu.
+    const PRET = 2000;
 
+    let opened = false;      // l'enveloppe est en train de s'ouvrir
+    let pret = false;        // le carton est sorti et lisible
+    let parti = false;       // l'overlay a été refermé
+    let minuteur = null;
+
+    /* 1er temps : le cachet saute, le carton sort. */
     function open(instant) {
       if (opened) return;
       opened = true;
       store.set("faire-part-ouvert", "1");
 
-      if (instant) return finish(true);
+      if (instant) return quitter(true);
 
       overlay.classList.add("is-opening");
       petals(overlay);
+
       setTimeout(() => {
-        overlay.classList.add("is-gone");
-        finish(false);
-      }, 2350);
-      setTimeout(() => { overlay.style.display = "none"; }, 3500);
+        pret = true;
+        overlay.classList.add("is-ready");
+        if (hint) hint.textContent = "Cliquez pour entrer";
+      }, PRET);
+
+      // le passage au site se fait au clic ; le minuteur n'est qu'un filet
+      // de sécurité pour qui ne cliquerait pas
+      if (duree > 0) minuteur = setTimeout(() => quitter(false), PRET + duree);
     }
 
-    seal?.addEventListener("click", () => open(false));
-    $("#envelope")?.addEventListener("click", (e) => {
-      if (e.target.closest(".wax-seal")) return;
-      open(false);
+    /* 2e temps : on quitte le faire-part pour le site. */
+    function quitter() {
+      if (parti) return;
+      parti = true;
+      clearTimeout(minuteur);
+      overlay.classList.add("is-gone");
+      finish(false);
+      setTimeout(() => { overlay.style.display = "none"; }, 1200);
+    }
+
+    /* Un clic fait avancer d'un temps : ouvrir, puis entrer. */
+    function avancer() {
+      if (!opened) open(false);
+      else if (pret) quitter();
+    }
+
+    seal?.addEventListener("click", (e) => { e.stopPropagation(); avancer(); });
+    overlay.addEventListener("click", (e) => {
+      if (e.target.closest(".env-skip")) return;
+      avancer();
     });
-    skip?.addEventListener("click", () => open(true));
-    document.addEventListener("keydown", function onKey(e) {
-      if (e.key === "Enter" || e.key === " " || e.key === "Escape") {
+    skip?.addEventListener("click", () => (opened ? quitter() : open(true)));
+    document.addEventListener("keydown", (e) => {
+      if (parti) return;
+      if (e.key === "Escape") return opened ? quitter() : open(true);
+      if (e.key === "Enter" || e.key === " ") {
         if (document.activeElement === skip) return;
-        open(e.key === "Escape");
-        document.removeEventListener("keydown", onKey);
+        e.preventDefault();
+        avancer();
       }
     });
 
-    function finishNow() { open(true); }
-    window.__openInvitation = finishNow;
+    window.__openInvitation = () => (opened ? quitter() : open(true));
   }
 
   function finish(instant) {

@@ -21,7 +21,7 @@ const WEDDING = {
   /*    Format ISO : "AAAA-MM-JJTHH:MM:SS" (heure de début de la journée) */
   /* ------------------------------------------------------------------ */
   date: {
-    iso: "2027-07-03T15:00:00",     //  À REMPLACER — sert au compte à rebours
+    iso: "2027-07-03T16:00:00",     //  À REMPLACER — sert au compte à rebours
     jourTexte: "Samedi 3 juillet 2027",   //  À REMPLACER — affiché en toutes lettres
     jourChiffre: "03",              //  À REMPLACER — grand chiffre du cachet
     moisChiffre: "07",              //  À REMPLACER
@@ -56,7 +56,7 @@ const WEDDING = {
     invitationTitre: "Un mot pour vous",
     invitationParagraphes: [
       "Après plusieurs années à construire notre histoire ensemble, nous avons décidé de nous dire oui. Et nous ne pouvons pas imaginer ce jour-là sans vous.",
-      "Vous qui nous avez vus grandir, rire, douter, avancer : nous serions profondément heureux de vous compter parmi nous pour célébrer ce moment.",
+      "Vous qui nous avez vus grandir, rire et evoluer : nous serions profondément heureux de vous compter parmi nous pour célébrer ce moment.",
       "Vous trouverez sur cette page toutes les informations pratiques, le déroulé de la journée, et un petit formulaire pour nous confirmer votre présence.",
       "À très vite,",
     ],
@@ -73,19 +73,19 @@ const WEDDING = {
   /*            arrivee | brunch                                         */
   /* ------------------------------------------------------------------ */
   programme: [
-    { heure: "15h00", titre: "Accueil des invités", lieu: "Cour du domaine",
+    { heure: "16h00", titre: "Accueil des invités", lieu: "Cour du domaine",
       texte: "Un rafraîchissement vous attend à l'ombre des platanes.", icone: "arrivee" },
-    { heure: "16h00", titre: "Cérémonie", lieu: "Cour du domaine",
+    { heure: "16h30", titre: "Cérémonie", lieu: "Cour du domaine",
       texte: "Le moment que vous ne voulez pas manquer.", icone: "ceremonie" },
-    { heure: "17h00", titre: "Vin d'honneur", lieu: "Jardin sud",
-      texte: "Champagne, douceurs et retrouvailles.", icone: "cocktail" },
-    { heure: "18h00", titre: "Photos de groupe", lieu: "Devant l'orangerie",
+    { heure: "17h00", titre: "Photos de groupe", lieu: "Jardin du domaine",
       texte: "Une petite demi-heure, promis.", icone: "photo" },
+    { heure: "18h00", titre: "Vin d'honneur", lieu: "Jardin du domaine",
+      texte: "Boissons, douceurs et retrouvailles.", icone: "cocktail" },
     { heure: "20h00", titre: "Dîner", lieu: "Grande salle",
-      texte: "Plan de table affiché à l'entrée.", icone: "diner" },
+      texte: "Pas de plan de table. Assayez la où le vent vous menera.", icone: "diner" },
     { heure: "23h00", titre: "Ouverture du bal", lieu: "Salle de danse",
       texte: "Et jusqu'au bout de la nuit.", icone: "danse" },
-    { heure: "11h00", titre: "Brunch (dimanche)", lieu: "Terrasse",
+    { heure: "11h00", titre: "Brunch (dimanche)", lieu: "Cour du domaine",
       texte: "Pour ceux qui tiennent encore debout.", icone: "brunch" },
   ],
 
@@ -105,7 +105,75 @@ const WEDDING = {
   },
 
   /* ------------------------------------------------------------------ */
-  /* 7. FORMULAIRE DE RÉPONSE (RSVP)                                     */
+  /* 7. INFORMATIONS PRATIQUES                                           */
+  /*    Les logements des environs, et tout ce qui aide les invités à    */
+  /*    s'organiser. Ajoute ou retire des blocs librement.               */
+  /*                                                                     */
+  /*    Pour chaque logement, seuls `nom` et `type` sont obligatoires :  */
+  /*    les autres champs disparaissent tout seuls s'ils sont vides.     */
+  /* ------------------------------------------------------------------ */
+  infosPratiques: {
+    titre: "Où dormir",
+    intro: "Voici quelques adresses autour du domaine, de la plus proche à la plus éloignée. Pensez à réserver tôt : juillet est une période chargée dans la région.",
+
+    logements: [
+      {
+        nom: "Domaine de Saint-Michel",             //  À REMPLACER
+        type: "Sur place",
+        distance: "Sur le lieu de réception",
+        prix: "à partir de 120 € la nuit",
+        note: "Douze chambres, à réserver directement auprès du domaine. Mentionnez notre mariage : un tarif nous a été réservé.",
+        tel: "05 61 00 00 00",
+        site: "https://example.com",
+      },
+      {
+        nom: "Hôtel des Vignes",                    //  À REMPLACER
+        type: "Hôtel",
+        distance: "5 min en voiture",
+        prix: "90 – 140 €",
+        note: "",
+        tel: "",
+        site: "https://example.com",
+      },
+      {
+        nom: "La Grange aux Oiseaux",               //  À REMPLACER
+        type: "Chambres d'hôtes",
+        distance: "10 min en voiture",
+        prix: "75 – 110 €",
+        note: "Petit-déjeuner compris, quatre chambres seulement.",
+        tel: "",
+        site: "https://example.com",
+      },
+      {
+        nom: "Camping du Lac",                      //  À REMPLACER
+        type: "Camping",
+        distance: "15 min en voiture",
+        prix: "à partir de 25 €",
+        note: "Emplacements tentes et quelques chalets.",
+        tel: "",
+        site: "https://example.com",
+      },
+    ],
+
+    // Blocs libres affichés sous les logements. Mets [] pour n'en afficher aucun.
+    autres: [
+      {
+        titre: "Navette",
+        texte: "Une navette fera l'aller-retour entre le centre-ville et le domaine, à 14 h puis à 1 h du matin. Dites-le nous dans le formulaire de réponse si vous comptez l'emprunter, pour que nous prévoyions les places.",
+      },
+      {
+        titre: "Tenue",
+        texte: "Élégante et confortable. La cérémonie et le vin d'honneur se tiennent en extérieur, sur de l'herbe : évitez les talons trop fins.",
+      },
+      {
+        titre: "Cadeaux",
+        texte: "Votre présence est déjà le principal. Pour ceux qui insistent, une urne sera à disposition le jour J.",
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ */
+  /* 8. FORMULAIRE DE RÉPONSE (RSVP)                                     */
   /*                                                                     */
   /*    a) Va sur https://formspree.io et crée un compte gratuit.        */
   /*    b) Crée un formulaire ("New form"), mets ton adresse e-mail.     */
@@ -123,7 +191,7 @@ const WEDDING = {
   },
 
   /* ------------------------------------------------------------------ */
-  /* 8. DIVERS                                                           */
+  /* 9. DIVERS                                                           */
   /* ------------------------------------------------------------------ */
   options: {
     // Afficher l'animation d'ouverture d'enveloppe à l'arrivée
@@ -132,6 +200,7 @@ const WEDDING = {
     enveloppeUneSeuleFois: true,
     // Afficher le compte à rebours
     compteARebours: true,
+    dureeCarton: 8000,   // temps de lecture en millisecondes
   },
 };
 
