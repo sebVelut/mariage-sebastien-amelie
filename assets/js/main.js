@@ -13,6 +13,18 @@
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* Crée un élément, et échappe le texte venu de config.js avant de le
+     coller dans du HTML — une apostrophe ou un « & » ne doit jamais
+     casser la page. */
+  const el = (tag, cls) => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    return n;
+  };
+  const esc = (s) => String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
   /* Le défilement est bloqué par JS (et non dans le HTML) : si le script
      échoue, la page reste utilisable au lieu de rester figée. */
   if (document.body) document.body.classList.add("is-locked");
@@ -44,6 +56,8 @@
     signature: C.textes?.signature,
     footerMsg: C.textes?.footer,
     dateLimite: C.rsvp?.dateLimite,
+    infosTitre: C.infosPratiques?.titre,
+    infosIntro: C.infosPratiques?.intro,
   };
 
   function hydrate() {
@@ -128,6 +142,73 @@
       gal.appendChild(fig);
       loadPhoto(fig.querySelector(".frame"), ph);
     });
+  }
+
+  /* --------------------------------------------- informations pratiques -- */
+  function buildInfos() {
+    const I = C.infosPratiques || {};
+    const liste = $("#lodgings");
+    const plus = $("#infosPlus");
+    const section = document.getElementById("infos");
+
+    const logements = I.logements || [];
+    const autres = I.autres || [];
+    // section vide (aucun logement, aucun bloc) : on la retire du site et
+    // du menu, plutôt que de laisser un titre orphelin
+    if (!logements.length && !autres.length) {
+      section?.remove();
+      $$('#navLinks a[href="#infos"]').forEach((a) => a.remove());
+      return;
+    }
+
+    if (liste) {
+      liste.innerHTML = "";
+      logements.forEach((l, i) => {
+        if (!l || !l.nom) return;
+        const li = el("li", "lodging reveal");
+        li.dataset.delay = String((i % 3) + 1);
+
+        const meta = [l.distance, l.prix].filter(Boolean)
+          .map((t) => `<span>${esc(t)}</span>`).join("");
+
+        const liens = [];
+        if (l.site) {
+          liens.push(`<a class="lodging__link" href="${esc(l.site)}"
+                         target="_blank" rel="noopener">Voir le site
+                         <svg viewBox="0 0 12 12" width="9" height="9" aria-hidden="true">
+                           <path d="M3 9L9 3M9 3H4.2M9 3v4.8" fill="none"
+                                 stroke="currentColor" stroke-width="1.2"
+                                 stroke-linecap="round" stroke-linejoin="round"/>
+                         </svg></a>`);
+        }
+        if (l.tel) {
+          liens.push(`<a class="lodging__tel" href="tel:${esc(l.tel.replace(/[^+\d]/g, ""))}">${esc(l.tel)}</a>`);
+        }
+
+        li.innerHTML =
+          `<div class="lodging__head">
+             <h3 class="lodging__name">${esc(l.nom)}</h3>
+             ${l.type ? `<span class="lodging__type">${esc(l.type)}</span>` : ""}
+           </div>` +
+          (meta ? `<p class="lodging__meta">${meta}</p>` : "") +
+          (l.note ? `<p class="lodging__note">${esc(l.note)}</p>` : "") +
+          (liens.length ? `<div class="lodging__links">${liens.join("")}</div>` : "");
+        liste.appendChild(li);
+      });
+    }
+
+    if (plus) {
+      plus.innerHTML = "";
+      autres.forEach((b, i) => {
+        if (!b || !(b.titre || b.texte)) return;
+        const d = el("div", "info-note reveal");
+        d.dataset.delay = String((i % 3) + 1);
+        d.innerHTML =
+          (b.titre ? `<h3>${esc(b.titre)}</h3>` : "") +
+          (b.texte ? `<p>${esc(b.texte)}</p>` : "");
+        plus.appendChild(d);
+      });
+    }
   }
 
   /* ------------------------------------------------------- programme ---- */
@@ -513,6 +594,7 @@
     hydrate();
     buildPhotos();
     buildTimeline();
+    buildInfos();
     buildMap();
     countdown();
     nav();
