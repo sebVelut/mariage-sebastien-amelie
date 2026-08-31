@@ -117,60 +117,140 @@ const WEDDING = {
     intro: "Voici quelques adresses autour du domaine, de la plus proche à la plus éloignée. Pensez à réserver tôt : juillet est une période chargée dans la région.",
     logements: [],
     autres: [],
-    // logements: [
-    //   {
-    //     nom: "Domaine de Saint-Michel",             //  À REMPLACER
-    //     type: "Sur place",
-    //     distance: "Sur le lieu de réception",
-    //     prix: "à partir de 120 € la nuit",
-    //     note: "Douze chambres, à réserver directement auprès du domaine. Mentionnez notre mariage : un tarif nous a été réservé.",
-    //     tel: "05 61 00 00 00",
-    //     site: "https://example.com",
-    //   },
-    //   {
-    //     nom: "Hôtel des Vignes",                    //  À REMPLACER
-    //     type: "Hôtel",
-    //     distance: "5 min en voiture",
-    //     prix: "90 – 140 €",
-    //     note: "",
-    //     tel: "",
-    //     site: "https://example.com",
-    //   },
-    //   {
-    //     nom: "La Grange aux Oiseaux",               //  À REMPLACER
-    //     type: "Chambres d'hôtes",
-    //     distance: "10 min en voiture",
-    //     prix: "75 – 110 €",
-    //     note: "Petit-déjeuner compris, quatre chambres seulement.",
-    //     tel: "",
-    //     site: "https://example.com",
-    //   },
-    //   {
-    //     nom: "Camping du Lac",                      //  À REMPLACER
-    //     type: "Camping",
-    //     distance: "15 min en voiture",
-    //     prix: "à partir de 25 €",
-    //     note: "Emplacements tentes et quelques chalets.",
-    //     tel: "",
-    //     site: "https://example.com",
-    //   },
-    // ],
+    logements: [
+      {
+        nom: "MAISON PRÈS DE L'YONNE",             //  À REMPLACER
+        type: "Airbnb",
+        distance: "Dans le village du domaine",
+        prix: "à partir de 180 € la nuit",
+        note: "Maison indépendante pour 6 personnes",
+        site: "https://www.airbnb.fr/rooms/1434853786981092012",
+      },
+      {
+        nom: "LES PORTES DE BOURGOGNE",                    //  À REMPLACER
+        type: "chambre d'hotes",
+        distance: "Dans le village du domaine",
+        prix: "à partir de 133 € la nuit",
+        note: ":3 chambres d'hôtes, 6 personnes",
+        site: "https://www.booking.com/hotel/fr/les-portes-de-bourgogne.fr.html",
+      },
+      {
+        nom: "VILLA NOYERS",               //  À REMPLACER
+        type: "Gîtes",
+        distance: "Dans le village du domaine",
+        prix: "à partir de 114 € la nuit",
+        note: "Maison indépendante pour 4 couples. soit 8 personnes.",
+        site: "ttps://www.gites-de-france.com/fr/bourgogne-franche-comte/yonne/villa-noyers-h89g030227",
+      },
+      {
+        nom: "L’OASIS-BALNÉO",                      //  À REMPLACER
+        type: "Airbnb",
+        distance: "Dans le village du domaine",
+        prix: "à partir de 137 € la nuit",
+        note: "1 chambre pour 2 personnes",
+        site: "https://www.airbnb.fr/rooms/1276214340038260975",
+      },
+      {
+        nom: "MAISON DE CAMPAGNE RUSTIQUE",                      //  À REMPLACER
+        type: "Gites",
+        distance: "A Michery, village à 4 minutes du domaine en voiture",
+        prix: "à partir de 108 € la nuit",
+        note: "4 lits pour 6 personnes",
+        site: "",
+      },
+      {
+        nom: "LES CHENEVIERES",                      //  À REMPLACER
+        type: "Gîtes",
+        distance: "A Michery, village à 4 minutes du domaine en voiture",
+        prix: "à partir de 137 € la nuit",
+        note: "1 chambre pour 4 personnes",
+        site: "https://www.gites.fr/d/64180656?searchId=c99ae7d9-7315-4423-8b0a-26ce10196851",
+      },
+      {
+        nom: "LA RENAUDIÈRE",                      //  À REMPLACER
+        type: "Airbnb",
+        distance: "A Courlon sur Yonne, village à 4 minutes du domaine en voiture",
+        prix: "à partir de 128 € la nuit",
+        note: "7 chambres pour 15 personnes",
+        site: "https://www.airbnb.fr/rooms/12319812",
+      },
+      {
+        nom: "CHAMBRE D’HÔTE CHEZ LÉNAIC",                      //  À REMPLACER
+        type: "Airbnb",
+        distance: "A Courlon sur Yonne, village à 4 minutes du domaine en voiture",
+        prix: "à partir de 85 € la nuit",
+        note: "1 chambre pour 2 personnes",
+        site: "https://www.airbnb.fr/rooms/1276214340038260975",
+      },
+      {
+        nom: "MAISON LONGÈRE LES CAMÉLIAS",                      //  À REMPLACER
+        type: "Booking",
+        distance: "A Vinneuf, village à 7 minutes du domaine en voiture",
+        prix: "",
+        note: "2 chambres pour 6 personnes",
+        site: "https://www.airbnb.fr/rooms/1276214340038260975",
+      },
+      {
+        nom: "AU 13",                      //  À REMPLACER
+        type: "Chambres d'hotes",
+        distance: "A Vinneuf, village à 7 minutes du domaine en voiture",
+        prix: "à partir de 147 € la nuit",
+        note: "1 chambre pour 2 personnes",
+        site: "https://www.airbnb.fr/rooms/1276214340038260975",
+      },
+      {
+        nom: "LA GRAINETERIE 89",                      //  À REMPLACER
+        type: "Apparts hotels",
+        distance: "A Pont sur Yonne, village à 10 minutes du domaine en voiture",
+        prix: "à partir de 186 € la nuit",
+        note: "11 chambres au total, pour 30 personnes",
+        site: "https://www.booking.com/hotel/fr/la-graineterie-pont-sur-yonne.fr.html",
+      },
+      {
+        nom: "CHEZ NATHALIE",                      //  À REMPLACER
+        type: "Airbnb",
+        distance: "A Pont sur Yonne, village à 10 minutes du domaine en voiture",
+        prix: "à partir de 56 € la nuit",
+        note: "1 chambre pour 2 personnes",
+        site: "https://www.airbnb.fr/rooms/920194758211762021",
+      },
+      {
+        nom: "LES 3 FONTAINES",                      //  À REMPLACER
+        type: "Gîtes",
+        distance: "A Sergines, village à 12 minutes du domaine en voiture",
+        prix: "à partir de 47 € la nuit",
+        note: "2 chambres pour 8 personnes",
+        site: "https://www.mairie-sergines.fr/gites-des-3-fontaines",
+      },
+      {
+        nom: "LE SARCINOË",                      //  À REMPLACER
+        type: "Gîtes",
+        distance: "A Pont sur Yonne, village à 10 minutes du domaine en voiture",
+        prix: "à partir de 47 € la nuit",
+        note: "2 chambres pour 6 personnes",
+        site: "https://www.le-sarcinoe.com/",
+      },
+      {
+        nom: "Hotels à Sens",                      //  À REMPLACER
+        type: "Hotel",
+        distance: "A Sens, ville à une vingtaine de minutes du domaine en voiture",
+        prix: "",
+        note: "",
+        site: "",
+      },
+    ],
 
-    // // Blocs libres affichés sous les logements. Mets [] pour n'en afficher aucun.
-    // autres: [
-    //   {
-    //     titre: "Navette",
-    //     texte: "Une navette fera l'aller-retour entre le centre-ville et le domaine, à 14 h puis à 1 h du matin. Dites-le nous dans le formulaire de réponse si vous comptez l'emprunter, pour que nous prévoyions les places.",
-    //   },
-    //   {
-    //     titre: "Tenue",
-    //     texte: "Élégante et confortable. La cérémonie et le vin d'honneur se tiennent en extérieur, sur de l'herbe : évitez les talons trop fins.",
-    //   },
-    //   {
-    //     titre: "Cadeaux",
-    //     texte: "Votre présence est déjà le principal. Pour ceux qui insistent, une urne sera à disposition le jour J.",
-    //   },
-    // ],
+    // Blocs libres affichés sous les logements. Mets [] pour n'en afficher aucun.
+    autres: [
+      {
+        titre: "Tenue",
+        texte: "Venez comme vous êtes. La cérémonie et le vin d'honneur se tiennent en extérieur, sur de l'herbe : évitez les talons trop fins.",
+      },
+      {
+        titre: "Cadeaux",
+        texte: "Nous ne faisons pas de liste de mariage. Nous allons mettre en place un pot commun pour ceux qui souhaitent nous offrir un cadeau. Vous pourrez y contribuer le jour J, ou en ligne via le lien ci-dessous (s'il n'y a rien, le lien viendra). Merci d'avance pour votre générosité !",
+      },
+    ],
   },
 
   /* ------------------------------------------------------------------ */
